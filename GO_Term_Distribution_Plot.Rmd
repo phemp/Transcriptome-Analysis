@@ -1,0 +1,72 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("ggplot2", lib.loc="~/R/win-library/3.6")
+library("reshape2")
+library("patchwork")
+
+```
+
+```{r}
+##UPLOAD DATA
+Ta8_go_slim_count <- read_delim("~/UD/Rhodoluna/GO Analysis/Ta8_go_slim_count.txt", 
+    "\t", escape_double = FALSE, trim_ws = TRUE)
+Mo1_go_slim_count <- read_delim("~/UD/Mo1/GO terms/Mo1_go_slim_count.txt", 
+    "\t", escape_double = FALSE, trim_ws = TRUE)
+
+##CONVERT TO DATA FRAME
+mo1_df<-data.frame(Mo1_go_slim_count)
+ta8_df<-data.frame(Ta8_go_slim_count)
+```
+
+
+```{r, fig.width=20, fig.height=15}
+##GENERATE BARCHART OF COUNTS###
+combined_df=merge(mo1_df,ta8_df, by.x="GO_Term", by.y = "GO_Term", all=TRUE)
+
+names(combined_df)[names(combined_df) == "GO_Term_Type.x"]<-"Mo1_GO_Term_Type"
+names(combined_df)[names(combined_df) == "GO_Term_Type.y"]<-"Ta8_GO_Term_Type"
+names(combined_df)[names(combined_df) == "Count.x"]<-"Mo1_Count"
+names(combined_df)[names(combined_df) == "Count.y"]<-"Ta8_Count"
+
+combined_df$Mo1_Count[is.na(combined_df$Mo1_Count)]<-0
+combined_df$Ta8_Count[is.na(combined_df$Ta8_Count)]<-0
+
+combined_df$Mo1_GO_Term_Type[is.na(combined_df$Mo1_GO_Term_Type)]<-as.character(combined_df$Ta8_GO_Term_Type[is.na(combined_df$Mo1_GO_Term_Type)])
+combined_df$Ta8_GO_Term_Type[is.na(combined_df$Ta8_GO_Term_Type)]<-as.character(combined_df$Mo1_GO_Term_Type[is.na(combined_df$Ta8_GO_Term_Type)])
+
+combined_df$Ta8_GO_Term_Type<-NULL
+names(combined_df)[names(combined_df) == "Mo1_GO_Term_Type"]<-"GO_Term_Type"
+
+combined_df<-combined_df[, c("GO_Term","Mo1_Count","Ta8_Count","GO_Term_Type")]
+
+combined_df_bp<-combined_df %>% filter(GO_Term_Type == "biological process")
+
+combined_df_bp_percent<-combined_df_bp
+
+combined_df_bp_percent[,2:3] = apply(combined_df_bp_percent[,2:3],2,function(x){(x/sum(x))*100})
+
+
+names(combined_df_bp_percent)[names(combined_df_bp_percent) == "Mo1_Count"]<-"Mo1"
+names(combined_df_bp_percent)[names(combined_df_bp_percent) == "Ta8_Count"]<-"Ta8"
+
+combined_df_bp_percent_filtered<-combined_df_bp_percent %>% filter(Mo1>1 | Ta8>1)
+
+combined_df_bp_percent.long<-melt(combined_df_bp_percent_filtered)
+names(combined_df_bp_percent.long)[names(combined_df_bp_percent.long) == "variable"]<-"Species"
+
+combined_go_bar_grayscale<-ggplot(data=combined_df_bp_percent.long[combined_df_bp_percent.long$value>.05,], aes(x=GO_Term, y=value, fill=Species))+
+geom_col(position = "dodge") +
+#ggtitle("Rhodoluna lacicola & Aurantimicrobium sp. strain Mo1 GO Term Counts")+
+scale_fill_manual(values=c("gray","black"))+
+theme(panel.border = element_rect(colour = "black", fill=NA, size=1), panel.background = element_rect(fill = NA), legend.text=element_text(size=25),legend.title=element_text(size=25), plot.title = element_text(size=30, face="bold", margin=margin(10, 15, 10, 0), hjust=0.5), axis.text.x = element_text(angle=50, size=22, vjust=1, hjust=1), axis.title.x = element_text(size = 25, margin = margin(t = 10, r = 0, b = 0, l = 0)), axis.text.y = element_text(size=22), axis.title.y = element_text(size=25, margin = margin(t = 0, r = 20, b = 0, l = 0)), axis.ticks.length.x = unit(.25, "cm"), plot.margin = unit(c(1,1,1,5), "cm") )+
+scale_y_continuous(expand = c(0, 0), limits = c(0, 21))+
+labs(y="GO Term Distribution (% of Total GO Term Count)", x = "Biological Process GO-slim Term")
+
+combined_go_bar_grayscale
+ggsave("Mo1_Ta8_go_barchart_grayscale_300dpi.tiff", width = 85, height = 65, units = "mm", dpi=300, device="tiff", scale=6)
+```
+

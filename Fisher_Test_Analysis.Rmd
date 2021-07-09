@@ -1,0 +1,142 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+ta8_macro_clusters<-read.csv("~/UD/Rhodoluna/ldcycle/Ta8_Macro_Groups_Fischer_Test_Data.csv")
+mo1_macro_clusters<-read.csv("~/UD/Mo1/GO terms/Mo1_Macro_Groups_Fischer_Test_Data.csv")
+```
+
+```{r}
+##Assign data to variables
+fisher_test_data<-ta8_macro_clusters
+
+fisher_test_data<-mo1_macro_clusters
+```
+
+```{r}
+###RUN FISHER TEST###
+library("fmsb", lib.loc="~/R/win-library/4.0")
+library("utils", lib.loc="C:/Program Files/R/R-4.0.4/library")
+library("sgof", lib.loc="~/R/win-library/4.0")
+
+ratio<-apply(fisher_test_data[,3:6],1,function(x)
+  fisher.test(matrix(x,nr=2, nc=2))$estimate)
+
+plot_oddsratio_data<-cbind(fisher_test_data,ratio)
+
+ratio_pvalue<-apply(fisher_test_data[,3:6],1,function(x)
+  fisher.test(matrix(x,nr=2), alternative = "greater")$p.value)
+
+corrected_pvalue<-p.adjust(ratio_pvalue, method = "BH")
+
+plot_ratio_conf_data<-cbind(plot_oddsratio_data,corrected_pvalue)
+plot_ratio_conf_data<-cbind(plot_ratio_conf_data,ratio_pvalue)
+
+filtered_plot_ratio_conf_data<-plot_ratio_conf_data[plot_ratio_conf_data[,5] >= 10,]
+filtered_plot_ratio_conf_data<-filtered_plot_ratio_conf_data[filtered_plot_ratio_conf_data[,7] > 1,]
+filtered_plot_ratio_conf_data<-filtered_plot_ratio_conf_data[filtered_plot_ratio_conf_data[,3] > 1,]
+
+```
+
+
+```{r}
+############################
+###Ta8 MACRO GROUPS PLOTS###
+############################
+
+filtered_plot_ratio_conf_data_ordered<-filtered_plot_ratio_conf_data[order(filtered_plot_ratio_conf_data$Gene.Group, -filtered_plot_ratio_conf_data$ratio),]
+
+filtered_plot_ratio_conf_data_ordered$Gene.Group <- factor(filtered_plot_ratio_conf_data_ordered$Gene.Group , levels = c("A-D","G-J","M-N"))
+
+filtered_plot_ratio_conf_data_ordered$GO.Slim.Term<-factor(filtered_plot_ratio_conf_data_ordered$GO.Slim.Term, levels = c(rev(unique(filtered_plot_ratio_conf_data_ordered$GO.Slim.Term))))
+
+
+LRT_goterm_enrichment_ta8<-ggplot(filtered_plot_ratio_conf_data_ordered, aes(y=GO.Slim.Term, x=ratio, color=Gene.Group , shape=Gene.Group ))+
+  geom_point(size = 6) +  
+  scale_color_manual(values=c("dark orange", "blue", "black"), labels = c("A-D","G-J","M-N"), name="Groups")+
+  scale_fill_manual(values=c("dark orange", "blue", "black"), labels = c("A-D","G-J","M-N"), name="Groups")+
+  scale_shape_manual(values=c(15,16,17), labels = c("A-D","G-J","M-N"), name="Groups")+
+  theme(panel.grid.minor = element_blank()) +
+  theme_bw()+
+  theme(panel.grid.minor = element_blank(), text = element_text(size=18), legend.key.size = unit(1, "cm"))+
+  xlab("Odds Ratio")+
+  ylab("Biological Process GO-slim Term")+ 
+  ggtitle('A.')
+  #facet_zoom(xlim = c(0,15))
+
+ggsave("Ta8_odds_ratio_cluster_groups.tiff", width=85,device='tiff', units = "mm",dpi=300, scale=5)
+
+write.csv(plot_ratio_conf_data, file = "ta8_grouped_clusters_odds_ratio.csv")
+```
+
+
+```{r}
+##################
+###MACRO GROUPS###
+##################
+
+filtered_plot_ratio_conf_data_ordered<-filtered_plot_ratio_conf_data[order(filtered_plot_ratio_conf_data$Gene.Group, -filtered_plot_ratio_conf_data$ratio),]
+
+filtered_plot_ratio_conf_data_ordered$Gene.Group <- factor(filtered_plot_ratio_conf_data_ordered$Gene.Group , levels = c("A-D","E-I","J-L","M-N"))
+
+filtered_plot_ratio_conf_data_ordered$GO.Slim.Term<-factor(filtered_plot_ratio_conf_data_ordered$GO.Slim.Term, levels = c(rev(unique(filtered_plot_ratio_conf_data_ordered$GO.Slim.Term))))
+
+filtered_plot_ratio_conf_data_ordered$GO.Slim.Term<-factor(filtered_plot_ratio_conf_data_ordered$GO.Slim.Term, levels = c(
+"small molecule metabolic process",
+"biosynthetic process",
+"cell cycle",
+"cellular amino acid metabolic process",
+"cellular nitrogen compound metabolic process",
+"cofactor metabolic process",
+"tRNA metabolic process",
+"cellular protein modification process",
+"sulfur compound metabolic process",
+"translation",
+"protein folding",
+"homeostatic process",
+"response to stress",
+"lipid metabolic process",
+"catabolic process",
+"signal transduction",
+"transposition",
+"DNA metabolic process",
+"chromosome organization",
+"transmembrane transport",
+"nucleobase-containing compound catabolic process",
+"ribosome biogenesis",
+"carbohydrate metabolic process",
+"cell division",
+"cell morphogenesis",
+"biological_process",
+"cell wall organization or biogenesis",
+"transport"
+))
+
+
+LRT_goterm_enrichment_mo1<-ggplot(filtered_plot_ratio_conf_data_ordered, aes(y=GO.Slim.Term, x=ratio, color=Gene.Group , shape=Gene.Group, fill=Gene.Group))+
+  geom_point(size = 6) +  
+  scale_color_manual(values=c("dark orange", "blue", "black", "black"), name="Groups")+
+  scale_fill_manual(values=c("dark orange", "blue", "yellow", "black"), name="Groups")+
+  scale_shape_manual(values=c(22,21,24,23), name="Groups")+
+  theme(panel.grid.minor = element_blank()) +
+  theme_bw()+
+  theme(panel.grid.minor = element_blank(), text = element_text(size=18), legend.key.size = unit(1, "cm"))+
+  xlab("Odds Ratio")+
+  ylab("Biological Process GO-slim Term")+ 
+  ggtitle('B.')
+  #facet_zoom(xlim = c(0,15))
+
+ggsave("Mo1_odds_ratio_grouped_cluster.tiff", width=85,device='tiff', units = "mm",dpi=300, scale=5)
+
+write.csv(plot_ratio_conf_data, file = "Mo1_grouped_clusters_odds_ratio.csv")
+```
+
+```{r}
+###GENERATE AND SAVE COMBINED PLOT###
+LRT_goterm_enrichment_ta8+LRT_goterm_enrichment_mo1
+ggsave("odds_ratio_grouped_clusters.tiff", width=85,device='tiff', units = "mm",dpi=300, scale=7)
+```
+

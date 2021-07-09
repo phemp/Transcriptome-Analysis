@@ -1,0 +1,14 @@
+A,Rhola_00010620,glycerol-3-phosphate dehydrogenase (NAD(P)+),A,C:cytoplasm; P:carbohydrate metabolic process; P:lipid metabolic process; P:catabolic process; P:biosynthetic process; F:oxidoreductase activity; C:protein-containing complex,5.47E-07
+A,Rhola_00013360,"fructose-1,6-bisphosphatase II",A,P:carbohydrate metabolic process; P:biosynthetic process; F:phosphatase activity; F:ion binding; P:small molecule metabolic process,2.74E-06
+A,Rhola_00009650,"3D-(3,5/4)-trihydroxycyclohexane-1,2-dione hydrolase",A,P:carbohydrate metabolic process; P:catabolic process; F:ion binding; P:small molecule metabolic process,2.04E-03
+A,Rhola_00008040,starch synthase,A,"P:carbohydrate metabolic process; P:biosynthetic process; F:transferase activity, transferring glycosyl groups",0.004606
+B,Rhola_00002260,alpha-glucosidase,B,"P:carbohydrate metabolic process; F:hydrolase activity, acting on glycosyl bonds",2.97E-11
+B,Rhola_00012060,glucosamine--fructose-6-phosphate aminotransferase (isomerizing),B,F:molecular_function; C:cytoplasm; P:carbohydrate metabolic process; P:biosynthetic process,1.83E-07
+B,Rhola_00002250,alpha-glucosidase,B,"P:carbohydrate metabolic process; F:hydrolase activity, acting on glycosyl bonds",9.18E-07
+B,Rhola_00005730,ribose 5-phosphate isomerase B,B,P:carbohydrate metabolic process; F:isomerase activity,2.36E-06
+B,Rhola_00006000,deoxyribose-phosphate aldolase,B,C:cytoplasm; P:carbohydrate metabolic process; P:biosynthetic process; F:lyase activity; P:nucleobase-containing compound catabolic process; P:small molecule metabolic process,0.000239
+B,Rhola_00007640,pyruvate kinase,B,P:carbohydrate metabolic process; P:generation of precursor metabolites and energy; P:catabolic process; F:kinase activity; P:cellular nitrogen compound metabolic process; F:ion binding; P:small molecule metabolic process,0.000634
+C,Rhola_00008590,UDP-N-acetylglucosamine-N-acetylmuramylpentapeptide N-acetylglucosamine transferase,C,"P:cell morphogenesis; C:plasma membrane; P:carbohydrate metabolic process; P:lipid metabolic process; P:cell cycle; P:biosynthetic process; F:transferase activity, transferring glycosyl groups; P:cell division; P:cell wall organization or biogenesis",8.40E-07
+D,Rhola_00004080,beta-fructofuranosidase,D,"P:carbohydrate metabolic process; F:hydrolase activity, acting on glycosyl bonds",2.22E-07
+D,Rhola_00001340,phosphoenolpyruvate carboxykinase (GTP),D,C:cytoplasm; P:carbohydrate metabolic process; P:biosynthetic process; F:kinase activity; F:oxidoreductase activity; F:lyase activity; F:ion binding; P:small molecule metabolic process,0.000309
+D,Rhola_00005360,starch synthase (maltosyl-transferring),D,"P:carbohydrate metabolic process; P:biosynthetic process; F:transferase activity, transferring glycosyl groups; F:hydrolase activity, acting on glycosyl bonds",0.003883

@@ -1,0 +1,108 @@
+GO_Term	Count	GO_Term_Type
+biosynthetic process	303	biological process
+cellular nitrogen compound metabolic process	196	biological process
+small molecule metabolic process	139	biological process
+cellular amino acid metabolic process	106	biological process
+translation	83	biological process
+DNA metabolic process	57	biological process
+carbohydrate metabolic process	53	biological process
+cofactor metabolic process	53	biological process
+generation of precursor metabolites and energy	40	biological process
+response to stress	38	biological process
+tRNA metabolic process	37	biological process
+lipid metabolic process	29	biological process
+catabolic process	28	biological process
+cell division	27	biological process
+cellular protein modification process	27	biological process
+transmembrane transport	24	biological process
+cell cycle	22	biological process
+ribosome biogenesis	20	biological process
+transport	20	biological process
+biological_process	19	biological process
+chromosome organization	18	biological process
+homeostatic process	17	biological process
+signal transduction	17	biological process
+sulfur compound metabolic process	17	biological process
+cell wall organization or biogenesis	14	biological process
+cell morphogenesis	13	biological process
+nucleobase-containing compound catabolic process	9	biological process
+protein folding	9	biological process
+protein targeting	7	biological process
+chromosome segregation	6	biological process
+protein maturation	5	biological process
+cellular component assembly	4	biological process
+protein transport	4	biological process
+oxidation-reduction process	3	biological process
+nucleic acid phosphodiester bond hydrolysis	2	biological process
+phosphorylation	2	biological process
+protein-containing complex assembly	2	biological process
+transposition	2	biological process
+amino acid transport	1	biological process
+carbohydrate transmembrane transport	1	biological process
+carbohydrate transport	1	biological process
+cellular oxidant detoxification	1	biological process
+mRNA processing	1	biological process
+"regulation of transcription, DNA-templated"	1	biological process
+reproduction	1	biological process
+riboflavin biosynthetic process	1	biological process
+ribonucleoprotein complex assembly	1	biological process
+secondary metabolic process	1	biological process
+terpenoid biosynthetic process	1	biological process
+ion binding	359	molecular function
+oxidoreductase activity	123	molecular function
+DNA binding	109	molecular function
+molecular_function	86	molecular function
+transmembrane transporter activity	81	molecular function
+lyase activity	67	molecular function
+ligase activity	65	molecular function
+kinase activity	56	molecular function
+isomerase activity	54	molecular function
+structural constituent of ribosome	52	molecular function
+ATPase activity	38	molecular function
+rRNA binding	38	molecular function
+nuclease activity	37	molecular function
+peptidase activity	36	molecular function
+RNA binding	33	molecular function
+methyltransferase activity	32	molecular function
+nucleotidyltransferase activity	29	molecular function
+"transferase activity, transferring acyl groups"	28	molecular function
+"hydrolase activity, acting on carbon-nitrogen (but not peptide) bonds"	25	molecular function
+"transferase activity, transferring glycosyl groups"	25	molecular function
+"transferase activity, transferring alkyl or aryl (other than methyl) groups"	23	molecular function
+helicase activity	19	molecular function
+DNA-binding transcription factor activity	12	molecular function
+"hydrolase activity, acting on glycosyl bonds"	12	molecular function
+"translation factor activity, RNA binding"	12	molecular function
+GTPase activity	10	molecular function
+phosphatase activity	6	molecular function
+unfolded protein binding	5	molecular function
+ATP binding	3	molecular function
+enzyme binding	3	molecular function
+enzyme regulator activity	3	molecular function
+endonuclease activity	2	molecular function
+monooxygenase activity	2	molecular function
+transferase activity	2	molecular function
+4-(cytidine 5'-diphospho)-2-C-methyl-D-erythritol kinase activity	1	molecular function
+5-amino-6-(5-phosphoribosylamino)uracil reductase activity	1	molecular function
+aminoacyl-tRNA ligase activity	1	molecular function
+carbohydrate transmembrane transporter activity	1	molecular function
+hydrolase activity	1	molecular function
+"hydrolase activity, acting on ester bonds"	1	molecular function
+lipid binding	1	molecular function
+mRNA binding	1	molecular function
+N-acetyltransferase activity	1	molecular function
+peroxidase activity	1	molecular function
+structural molecule activity	1	molecular function
+cellular_component	237	cellular compartment
+cytoplasm	195	cellular compartment
+plasma membrane	93	cellular compartment
+protein-containing complex	56	cellular compartment
+ribosome	55	cellular compartment
+cell	15	cellular compartment
+intracellular	15	cellular compartment
+integral component of membrane	10	cellular compartment
+membrane	10	cellular compartment
+chromosome	5	cellular compartment
+cytosol	3	cellular compartment
+extracellular region	1	cellular compartment
+peroxisome	1	cellular compartment
