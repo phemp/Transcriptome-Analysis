@@ -1,5 +1,5 @@
 # Transcriptome-Analysis
-This repository contains R markdown files and input datasets for the transcriptomic analysis of Rhodoluna lacicola and Aurantimicrobium sp. strain MWH-Mo1
+This repository contains R markdown files and input datasets for the transcriptomic analysis of Rhodoluna lacicola and Aurantimicrobium sp. strain MWH-Mo1 time-series RNA-seq data.
 
 # Notes
 Input data files are included in this repository. 
