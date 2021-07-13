@@ -3,7 +3,7 @@ This repository contains R markdown files and input datasets for the transcripto
 
 # Notes
 Input data files are included in this repository. 
-Running these analyses requires R.
+Running these scripts requires R studio.
 
 # Files
 There are three .Rmd files for the bioinformatic analysis of *R.lacicola* and *Aurantimiccrobium* sp. strain MWH-Mo1 light/dark cycling RNA-Seq data:
