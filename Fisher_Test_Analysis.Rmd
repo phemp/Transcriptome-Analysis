@@ -5,8 +5,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(readr)
-ta8_macro_clusters<-read.csv("~/UD/Rhodoluna/ldcycle/Ta8_Macro_Groups_Fischer_Test_Data.csv")
-mo1_macro_clusters<-read.csv("~/UD/Mo1/GO terms/Mo1_Macro_Groups_Fischer_Test_Data.csv")
+ta8_macro_clusters<-read.csv("~/Ta8_Macro_Groups_Fischer_Test_Data.csv")
+mo1_macro_clusters<-read.csv("~/Mo1_Macro_Groups_Fischer_Test_Data.csv")
 ```
 
 ```{r}
