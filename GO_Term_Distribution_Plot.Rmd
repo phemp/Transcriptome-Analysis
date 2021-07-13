@@ -12,9 +12,9 @@ library("patchwork")
 
 ```{r}
 ##UPLOAD DATA
-Ta8_go_slim_count <- read_delim("~/UD/Rhodoluna/GO Analysis/Ta8_go_slim_count.txt", 
+Ta8_go_slim_count <- read_delim("~/Ta8_go_slim_count.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
-Mo1_go_slim_count <- read_delim("~/UD/Mo1/GO terms/Mo1_go_slim_count.txt", 
+Mo1_go_slim_count <- read_delim("~/Mo1_go_slim_count.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 
 ##CONVERT TO DATA FRAME
