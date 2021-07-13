@@ -20,17 +20,17 @@ library(c("BiocParallel", "DelayedArray","vsn","GenomeInfoDb","GenomicRanges","D
 Import Data Sets
 ```{r}
 #Ta8 Count Data
-ta8_raw_counts_formatted <- read_delim("~/UD/Rhodoluna/ldcycle/ta8_raw_counts_formatted.tsv", 
+ta8_raw_counts_formatted <- read_delim("~/ta8_raw_counts_formatted.tsv", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 #Mo1 Count Data
-raw_counts_formated <- read_delim("~/UD/Mo1/ldcycle/raw_counts_formated.txt", 
+raw_counts_formated <- read_delim("~/raw_counts_formated.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 
 #Ta8 Column Data
-ta8_col_data <- read_delim("~/UD/Rhodoluna/ldcycle/ta8_rc_formated_col_conditions.txt", 
+ta8_col_data <- read_delim("~/ta8_rc_formated_col_conditions.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 #Mo1 Colum Data
-col_data <- read_delim("~/UD/Mo1/ldcycle/raw_counts_formated_col_conditions.txt", 
+col_data <- read_delim("~/raw_counts_formated_col_conditions.txt", 
     "\t", escape_double = FALSE, trim_ws = TRUE)
 ```
 
